@@ -1,5 +1,5 @@
 import sys
-from PyPDF2 import PdfReader, PdfMerger
+from PyPDF2 import PdfReader, PdfMerger, PdfFileReader, PdfFileWriter
 
 from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow, QDesktopWidget, QFileDialog, qApp, QInputDialog
@@ -46,8 +46,22 @@ class MyPDFtools(QMainWindow, PDFtools.Ui_MainWindow):
 
     def ExtractText(self):
         reader = PdfReader(self.pdfpath[-1])
-        page = reader.pages[0]
-        self.ExtractTexttextBrowser.setText(page.extract_text())
+        frompage = self.PageInputfromplainTextEdit.toPlainText()
+        topage = self.PageInputtoplainTextEdit.toPlainText()
+        if not frompage:
+            return
+        if topage:
+            if frompage == topage:
+                page = reader.pages[int(frompage)]
+                self.ExtractTexttextBrowser.setText(page.extract_text())
+            else:
+                self.ExtractTexttextBrowser.clear()
+                for i in range(int(frompage), int(topage) + 1):
+                    page = reader.pages[i]
+                    self.ExtractTexttextBrowser.append(page.extract_text())
+        else:
+            page = reader.pages[int(frompage)]
+            self.ExtractTexttextBrowser.setText(page.extract_text())
 
     def MergingPdf(self):
         merger = PdfMerger()
@@ -56,6 +70,20 @@ class MyPDFtools(QMainWindow, PDFtools.Ui_MainWindow):
         merger.write("merged-pdf.pdf")
         merger.close()
         self.statusBar.showMessage("Merge success!")
+
+    def SplitPdf(self):
+        frompage = self.PageInputfromplainTextEdit_2.toPlainText()
+        topage = self.PageInputtoplainTextEdit_2.toPlainText()
+        print(frompage, topage)
+        if frompage and topage:
+            with open(self.pdfpath[-1], 'rb') as pdftoSplit:
+                reader = PdfFileReader(pdftoSplit)
+                writer = PdfFileWriter()
+                for i in range(int(frompage), int(topage) + 1):
+                    writer.addPage(reader.getPage(i))
+                with open("Splitd-pdf.pdf", 'wb') as out:
+                    writer.write(out)
+                    self.statusBar.showMessage("Split success!")
 
     def center(self):
         qr = self.frameGeometry()

@@ -14,88 +14,156 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QTabWidget" name="tabWidget">
-      <property name="toolTip">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>9</y>
+      <width>361</width>
+      <height>237</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab1">
+     <attribute name="title">
+      <string>metadata</string>
+     </attribute>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QPushButton" name="MetadataButton">
+        <property name="text">
+         <string>Get Metadata</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QTextBrowser" name="MetadatatextBrowser"/>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="tab2">
+     <attribute name="title">
+      <string>Extract Text from a PDF</string>
+     </attribute>
+     <widget class="QTextBrowser" name="ExtractTexttextBrowser">
+      <property name="geometry">
+       <rect>
+        <x>92</x>
+        <y>10</y>
+        <width>256</width>
+        <height>192</height>
+       </rect>
       </property>
-      <property name="currentIndex">
-       <number>0</number>
-      </property>
-      <widget class="QWidget" name="tab1">
-       <attribute name="title">
-        <string>metadata</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout_2">
-        <item row="0" column="0">
-         <widget class="QPushButton" name="MetadataButton">
-          <property name="text">
-           <string>Get Metadata</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QTextBrowser" name="MetadatatextBrowser"/>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="tab2">
-       <attribute name="title">
-        <string>Extract Text from a PDF</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout_3">
-        <item row="0" column="0">
-         <widget class="QPushButton" name="ExtractTextButton">
-          <property name="text">
-           <string>Extract Text</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QTextBrowser" name="ExtractTexttextBrowser"/>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="tab3">
-       <attribute name="title">
-        <string>Merging PDF files</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout_4">
-        <item row="0" column="1" rowspan="3">
-         <widget class="QTextBrowser" name="PdfListtextBrowser"/>
-        </item>
-        <item row="2" column="0">
-         <widget class="QPushButton" name="ClearPDFButton">
-          <property name="text">
-           <string>Clear PDF</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QPushButton" name="AddPDFButton">
-          <property name="text">
-           <string>Add PDF</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QPushButton" name="pushButton">
-          <property name="text">
-           <string>Merging PDF</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="tab">
-       <attribute name="title">
-        <string>Page</string>
-       </attribute>
-      </widget>
      </widget>
-    </item>
-   </layout>
+     <widget class="QPushButton" name="ExtractTextButton">
+      <property name="geometry">
+       <rect>
+        <x>11</x>
+        <y>127</y>
+        <width>69</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Extract Text</string>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="PageInputfromplainTextEdit">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>62</y>
+        <width>67</width>
+        <height>26</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="PageInputtoplainTextEdit">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>94</y>
+        <width>67</width>
+        <height>26</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab3">
+     <attribute name="title">
+      <string>Merge PDF files</string>
+     </attribute>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QPushButton" name="AddPDFButton">
+        <property name="text">
+         <string>Add PDF</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" rowspan="3">
+       <widget class="QTextBrowser" name="PdfListtextBrowser"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string>Merging PDF</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QPushButton" name="ClearPDFButton">
+        <property name="text">
+         <string>Clear PDF</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Split PDF files</string>
+     </attribute>
+     <widget class="QPlainTextEdit" name="PageInputfromplainTextEdit_2">
+      <property name="geometry">
+       <rect>
+        <x>41</x>
+        <y>71</y>
+        <width>131</width>
+        <height>39</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="SplitButton">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>140</y>
+        <width>69</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Split PDF</string>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="PageInputtoplainTextEdit_2">
+      <property name="geometry">
+       <rect>
+        <x>178</x>
+        <y>71</y>
+        <width>132</width>
+        <height>39</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -165,8 +233,8 @@
    <slot>ExtractText()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>40</x>
-     <y>158</y>
+     <x>42</x>
+     <y>179</y>
     </hint>
     <hint type="destinationlabel">
      <x>72</x>
@@ -222,6 +290,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>SplitButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>SplitPdf()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>181</x>
+     <y>195</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>256</x>
+     <y>271</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>GetPdfPath()</slot>
@@ -229,5 +313,6 @@
   <slot>ExtractText()</slot>
   <slot>ClearPdfPath()</slot>
   <slot>MergingPdf()</slot>
+  <slot>SplitPdf()</slot>
  </slots>
 </ui>
